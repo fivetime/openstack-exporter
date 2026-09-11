@@ -2,11 +2,13 @@ package exporters
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log/slog"
 	"net/http"
 	"reflect"
 	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/gophercloud/gophercloud/v2"
@@ -20,6 +22,7 @@ import (
 	"github.com/gophercloud/gophercloud/v2/openstack/compute/v2/servers"
 	"github.com/gophercloud/gophercloud/v2/openstack/compute/v2/services"
 	"github.com/gophercloud/gophercloud/v2/openstack/compute/v2/usage"
+	"github.com/gophercloud/gophercloud/v2/pagination"
 	"github.com/openstack-exporter/openstack-exporter/utils"
 	"github.com/prometheus/client_golang/prometheus"
 )
@@ -177,7 +180,7 @@ func ListHypervisors(ctx context.Context, exporter *BaseOpenStackExporter, ch ch
 		listOpts = &hypervisors.ListOpts{}
 	}
 
-	allPagesHypervisors, err := hypervisors.List(exporter.ClientV2, listOpts).AllPages(ctx)
+	allPagesHypervisors, err := hypervisors.List(exporter.ClientV2, listOpts).WithPageCreator(newHypervisorPage).AllPages(ctx)
 	if err != nil {
 		return err
 	}
@@ -568,4 +571,61 @@ func (s flavorIDMapper) Search(flavorName any) string {
 	}
 
 	return s[key]
+}
+
+// newHypervisorPage is the page creator of hypervisors.List with one change:
+// it normalizes cpu_info (see normalizeCPUInfo) before gophercloud decodes the
+// page. The pager already calls ExtractHypervisors from HypervisorPage.IsEmpty,
+// so without this a single hypervisor with string-typed cpu_info fields fails
+// the whole listing and drops every hypervisor metric of the cloud.
+func newHypervisorPage(r pagination.PageResult) pagination.Page {
+	if body, ok := r.Body.(map[string]any); ok {
+		if items, ok := body["hypervisors"].([]any); ok {
+			for _, item := range items {
+				if h, ok := item.(map[string]any); ok {
+					normalizeCPUInfo(h)
+				}
+			}
+		}
+	}
+	return hypervisors.HypervisorPage{LinkedPageBase: pagination.LinkedPageBase{PageResult: r}}
+}
+
+// normalizeCPUInfo rewrites the cpu_info fields that some virt drivers report
+// as strings into the types gophercloud decodes them into. The nova-incus
+// driver sends features as one space-separated string and the topology counts
+// as strings ({"sockets": "32", "cores": "1", "threads": "1"}). cpu_info may be
+// an object or, with older microversions, the JSON encoding of one.
+func normalizeCPUInfo(h map[string]any) {
+	var cpuInfo map[string]any
+	switch t := h["cpu_info"].(type) {
+	case map[string]any:
+		cpuInfo = t
+	case string:
+		if err := json.Unmarshal([]byte(t), &cpuInfo); err != nil {
+			return
+		}
+	default:
+		return
+	}
+	if cpuInfo == nil {
+		return
+	}
+	if features, ok := cpuInfo["features"].(string); ok {
+		cpuInfo["features"] = strings.Fields(features)
+	}
+	if topology, ok := cpuInfo["topology"].(map[string]any); ok {
+		for _, key := range []string{"cells", "sockets", "cores", "threads"} {
+			value, ok := topology[key].(string)
+			if !ok {
+				continue
+			}
+			if n, err := strconv.Atoi(strings.TrimSpace(value)); err == nil {
+				topology[key] = n
+			} else {
+				delete(topology, key)
+			}
+		}
+	}
+	h["cpu_info"] = cpuInfo
 }
