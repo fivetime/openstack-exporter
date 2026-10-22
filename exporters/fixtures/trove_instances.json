@@ -1,21 +1,152 @@
 {
-   "instances": [
-      {
-         "status": "ACTIVE",
-         "volume": {
-            "volume_id": "6edbc2f4-1507-44f8-ac0d-eed1d2608d38",
-            "used": 0.4,
-            "size": 20
-         },
-         "id": "0cef87c6-bd23-4f6b-8458-a393c39486d8",
-         "name": "mysql1",
-         "region": "RegionOne",
-         "health_status": "available",
-         "tenant_id": "0cbd49cbf76d405d9c86562e1d579bd3",
-         "datastore": {
-            "version": "5.7",
-            "type": "mysql"
-         }
-      }
-   ]
+    "instances": [
+        {
+            "id": "a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+            "name": "cs2-member-dc1-rack1-3",
+            "status": "ACTIVE",
+            "operating_status": "HEALTHY",
+            "links": [
+                {
+                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                    "rel": "bookmark"
+                }
+            ],
+            "flavor": {
+                "id": "363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                "links": [
+                    {
+                        "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "https://trove-api.openstack.svc.cluster.local:8779/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "rel": "bookmark"
+                    }
+                ]
+            },
+            "datastore": {
+                "type": "cassandra",
+                "version": "5.0",
+                "version_number": "5.0"
+            },
+            "region": null,
+            "access": {
+                "is_public": false
+            },
+            "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
+            "volume": {
+                "size": 4
+            },
+            "ip": [
+                "192.168.1.251"
+            ],
+            "addresses": [
+                {
+                    "address": "192.168.1.251",
+                    "type": "private",
+                    "network": "68ade15f-b2f1-4d58-903a-e5477c9755b8"
+                }
+            ],
+            "created": "2026-10-22T22:02:15",
+            "updated": "2026-10-22T22:03:31",
+            "service_status_updated": "2026-10-22T23:07:54",
+            "cluster_id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+            "server_id": "fb9b1b79-0fd7-47c9-ad95-aff8737448cd",
+            "volume_id": "f55f97c5-785a-48f8-becf-6bf6d65dff96",
+            "encrypted_rpc_messaging": true,
+            "server": {
+                "id": "fb9b1b79-0fd7-47c9-ad95-aff8737448cd",
+                "name": "cs2-member-dc1-rack1-3",
+                "status": "ACTIVE",
+                "tenant_id": "7e92eb25f709471583f1bedf125239ac",
+                "host": "fa7848e99f415184ba06badb1f01e19e3ae01d8522c37c49ea17a169"
+            },
+            "service_status": "HEALTHY",
+            "deleted": false,
+            "deleted_at": null,
+            "task_description": "No tasks for the instance.",
+            "message_partition": null
+        },
+        {
+            "id": "b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+            "name": "cs2-member-dc1-rack1-1",
+            "status": "ACTIVE",
+            "operating_status": "HEALTHY",
+            "links": [
+                {
+                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                    "rel": "bookmark"
+                }
+            ],
+            "flavor": {
+                "id": "363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                "links": [
+                    {
+                        "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "https://trove-api.openstack.svc.cluster.local:8779/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "rel": "bookmark"
+                    }
+                ]
+            },
+            "datastore": {
+                "type": "cassandra",
+                "version": "5.0",
+                "version_number": "5.0"
+            },
+            "region": null,
+            "access": {
+                "is_public": false
+            },
+            "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
+            "volume": {
+                "size": 4
+            },
+            "ip": [
+                "192.168.1.244"
+            ],
+            "addresses": [
+                {
+                    "address": "192.168.1.244",
+                    "type": "private",
+                    "network": "68ade15f-b2f1-4d58-903a-e5477c9755b8"
+                }
+            ],
+            "created": "2026-10-22T22:02:14",
+            "updated": "2026-10-22T22:03:27",
+            "service_status_updated": "2026-10-22T23:07:58",
+            "cluster_id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+            "server_id": "672b0ab4-eeb8-4bfa-bcf4-681187087edf",
+            "volume_id": "5ce9e99d-7762-4964-8961-d184e08c23b1",
+            "encrypted_rpc_messaging": true,
+            "server": {
+                "id": "672b0ab4-eeb8-4bfa-bcf4-681187087edf",
+                "name": "cs2-member-dc1-rack1-1",
+                "status": "ACTIVE",
+                "tenant_id": "7e92eb25f709471583f1bedf125239ac",
+                "host": "d2d4af4b1058caea7f43e3cbcd236cf2524251ba5dc315f58cd60417"
+            },
+            "service_status": "HEALTHY",
+            "deleted": false,
+            "deleted_at": null,
+            "task_description": "No tasks for the instance.",
+            "message_partition": null
+        }
+    ],
+    "links": [
+        {
+            "rel": "next",
+            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/mgmt/instances?include_clustered=True&deleted=False&limit=2&marker=2"
+        }
+    ]
 }
