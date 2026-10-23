@@ -12,6 +12,12 @@ type TroveTestSuite struct {
 }
 
 var troveExpectedUp = `
+# HELP openstack_trove_cluster_health cluster_health
+# TYPE openstack_trove_cluster_health gauge
+openstack_trove_cluster_health{datastore_type="cassandra",datastore_version="5.0",health_status="HEALTHY",id="38f82ead-a7b6-46b5-ac47-fcff8f4a6909",name="cs2",task="NONE",tenant_id="ac19c812536b4b06bd8c394353d683f3"} 0
+# HELP openstack_trove_cluster_members_out cluster_members_out
+# TYPE openstack_trove_cluster_members_out gauge
+openstack_trove_cluster_members_out{datastore_type="cassandra",datastore_version="5.0",health_status="HEALTHY",id="38f82ead-a7b6-46b5-ac47-fcff8f4a6909",name="cs2",task="NONE",tenant_id="ac19c812536b4b06bd8c394353d683f3"} 0
 # HELP openstack_trove_instance_operating_status instance_operating_status
 # TYPE openstack_trove_instance_operating_status gauge
 openstack_trove_instance_operating_status{cluster_id="38f82ead-a7b6-46b5-ac47-fcff8f4a6909",datastore_type="cassandra",datastore_version="5.0",health_status="",id="9413e539-2138-4df6-b524-a064b49b13a6",name="cs2-member-dc1-rack1-2",operating_status="HEALTHY",region="",status="ACTIVE",tenant_id="ac19c812536b4b06bd8c394353d683f3"} 3

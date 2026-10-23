@@ -71,6 +71,12 @@
                     ]
                 }
             ],
+            "health": {
+                "status": "HEALTHY",
+                "members_out": [],
+                "reason": null,
+                "since": "2026-10-22T22:07:01"
+            },
             "locality": "anti-affinity",
             "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
             "deleted": false

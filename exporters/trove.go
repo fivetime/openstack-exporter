@@ -49,12 +49,24 @@ var knownDBOperatingStatuses = map[string]int{
 	"ERROR":            14, // The guest agent is in error or has not reported for too long.
 }
 
+// The health of a cluster as a whole, as the task manager recorded it.
+var knownDBClusterHealthStatuses = map[string]int{
+	"HEALTHY":  0, // Every member answers.
+	"DEGRADED": 1, // Some member is out; the cluster still serves.
+	"DOWN":     2, // The cluster does not serve.
+	"UNKNOWN":  3, // The task manager has not looked yet.
+}
+
 func mapDBInstanceStatus(current string) int {
 	return mapStatus(knownDBInstanceStatuses, current)
 }
 
 func mapDBOperatingStatus(current string) int {
 	return mapStatus(knownDBOperatingStatuses, current)
+}
+
+func mapDBClusterHealthStatus(current string) int {
+	return mapStatus(knownDBClusterHealthStatuses, current)
 }
 
 type TroveExporter struct {
@@ -99,6 +111,23 @@ type clusterAttributes struct {
 
 	// The human-readable name of the cluster.
 	Name string
+
+	// The task the cluster is on; NONE when idle.
+	Task struct {
+		Name string `json:"name"`
+	} `json:"task"`
+
+	// Indicates how the cluster stores data.
+	Datastore datastores.DatastorePartial
+
+	// The health of the cluster as the task manager recorded it.
+	Health struct {
+		Status     string   `json:"status"`
+		MembersOut []string `json:"members_out"`
+	} `json:"health"`
+
+	// TenantID is the id of the project that owns the cluster.
+	TenantID string `json:"tenant_id"`
 }
 
 // troveInstancePage is a page of the management instance list. Trove links
@@ -184,7 +213,7 @@ func listDBInstances(client *gophercloud.ServiceClient) pagination.Pager {
 	})
 }
 
-// list retrieves all database clusters.
+// list retrieves the status and health of all database clusters.
 func listDBClusters(client *gophercloud.ServiceClient) pagination.Pager {
 	return pagination.NewPager(client, client.ServiceURL("mgmt", "clusters?deleted=False"), func(r pagination.PageResult) pagination.Page {
 		return troveClusterPage{SinglePageBase: pagination.SinglePageBase(r)}
@@ -193,6 +222,8 @@ func listDBClusters(client *gophercloud.ServiceClient) pagination.Pager {
 
 var troveInstanceLabels = []string{"cluster_id", "datastore_type", "datastore_version", "health_status", "id", "name", "operating_status", "region", "status", "tenant_id"}
 
+var troveClusterLabels = []string{"datastore_type", "datastore_version", "health_status", "id", "name", "task", "tenant_id"}
+
 var defaultTroveMetrics = []Metric{
 	{Name: "total_instances", Fn: ListAllInstances},
 	{Name: "instance_status", Labels: troveInstanceLabels, Fn: nil},
@@ -200,6 +231,8 @@ var defaultTroveMetrics = []Metric{
 	{Name: "instance_volume_size_gb", Labels: troveInstanceLabels, Fn: nil},
 	{Name: "instance_volume_used_gb", Labels: troveInstanceLabels, Fn: nil},
 	{Name: "total_clusters", Fn: ListAllDBClusters},
+	{Name: "cluster_health", Labels: troveClusterLabels, Fn: nil},
+	{Name: "cluster_members_out", Labels: troveClusterLabels, Fn: nil},
 }
 
 func NewTroveExporter(config *ExporterConfig, logger *slog.Logger) (*TroveExporter, error) {
@@ -266,6 +299,15 @@ func ListAllDBClusters(ctx context.Context, exporter *BaseOpenStackExporter, ch 
 
 	ch <- prometheus.MustNewConstMetric(exporter.Metrics["total_clusters"].Metric,
 		prometheus.GaugeValue, float64(len(allClusters)))
+
+	for _, cluster := range allClusters {
+		labelValues := []string{cluster.Datastore.Type, cluster.Datastore.Version, cluster.Health.Status,
+			cluster.ID, cluster.Name, cluster.Task.Name, cluster.TenantID}
+		ch <- prometheus.MustNewConstMetric(exporter.Metrics["cluster_health"].Metric,
+			prometheus.GaugeValue, float64(mapDBClusterHealthStatus(cluster.Health.Status)), labelValues...)
+		ch <- prometheus.MustNewConstMetric(exporter.Metrics["cluster_members_out"].Metric,
+			prometheus.GaugeValue, float64(len(cluster.Health.MembersOut)), labelValues...)
+	}
 
 	return nil
 }
