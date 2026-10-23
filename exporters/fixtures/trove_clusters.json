@@ -1,0 +1,79 @@
+{
+    "clusters": [
+        {
+            "id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+            "name": "cs2",
+            "task": {
+                "id": 1,
+                "name": "NONE",
+                "description": "No tasks for the cluster."
+            },
+            "created": "2026-10-22T22:02:14",
+            "updated": "2026-10-22T22:06:57",
+            "links": [
+                {
+                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/clusters/38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://trove-api.openstack.svc.cluster.local:8779/clusters/38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+                    "rel": "bookmark"
+                }
+            ],
+            "datastore": {
+                "type": "cassandra",
+                "version": "5.0"
+            },
+            "instances": [
+                {
+                    "id": "9413e539-2138-4df6-b524-a064b49b13a6",
+                    "name": "cs2-member-dc1-rack1-2",
+                    "type": "member",
+                    "links": [
+                        {
+                            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/9413e539-2138-4df6-b524-a064b49b13a6",
+                            "rel": "self"
+                        },
+                        {
+                            "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/9413e539-2138-4df6-b524-a064b49b13a6",
+                            "rel": "bookmark"
+                        }
+                    ]
+                },
+                {
+                    "id": "a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                    "name": "cs2-member-dc1-rack1-3",
+                    "type": "member",
+                    "links": [
+                        {
+                            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                            "rel": "self"
+                        },
+                        {
+                            "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                            "rel": "bookmark"
+                        }
+                    ]
+                },
+                {
+                    "id": "b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                    "name": "cs2-member-dc1-rack1-1",
+                    "type": "member",
+                    "links": [
+                        {
+                            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                            "rel": "self"
+                        },
+                        {
+                            "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                            "rel": "bookmark"
+                        }
+                    ]
+                }
+            ],
+            "locality": "anti-affinity",
+            "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
+            "deleted": false
+        }
+    ]
+}
