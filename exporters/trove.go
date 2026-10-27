@@ -124,6 +124,10 @@ type clusterAttributes struct {
 	Health struct {
 		Status     string   `json:"status"`
 		MembersOut []string `json:"members_out"`
+		// How many times a member started taking the cluster's writes:
+		// a writer that moves within one look leaves the status as it
+		// was.
+		WriterChanges int `json:"writer_changes"`
 	} `json:"health"`
 
 	// TenantID is the id of the project that owns the cluster.
@@ -224,6 +228,10 @@ var troveInstanceLabels = []string{"cluster_id", "datastore_type", "datastore_ve
 
 var troveClusterLabels = []string{"datastore_type", "datastore_version", "health_status", "id", "name", "task", "tenant_id"}
 
+// The labels of a counter of a cluster: none that changes with its health
+// or task, which would start a new series and break increase().
+var troveClusterCounterLabels = []string{"datastore_type", "datastore_version", "id", "name", "tenant_id"}
+
 var defaultTroveMetrics = []Metric{
 	{Name: "total_instances", Fn: ListAllInstances},
 	{Name: "instance_status", Labels: troveInstanceLabels, Fn: nil},
@@ -233,6 +241,7 @@ var defaultTroveMetrics = []Metric{
 	{Name: "total_clusters", Fn: ListAllDBClusters},
 	{Name: "cluster_health", Labels: troveClusterLabels, Fn: nil},
 	{Name: "cluster_members_out", Labels: troveClusterLabels, Fn: nil},
+	{Name: "cluster_writer_changes", Labels: troveClusterCounterLabels, Fn: nil},
 }
 
 func NewTroveExporter(config *ExporterConfig, logger *slog.Logger) (*TroveExporter, error) {
@@ -307,6 +316,9 @@ func ListAllDBClusters(ctx context.Context, exporter *BaseOpenStackExporter, ch 
 			prometheus.GaugeValue, float64(mapDBClusterHealthStatus(cluster.Health.Status)), labelValues...)
 		ch <- prometheus.MustNewConstMetric(exporter.Metrics["cluster_members_out"].Metric,
 			prometheus.GaugeValue, float64(len(cluster.Health.MembersOut)), labelValues...)
+		ch <- prometheus.MustNewConstMetric(exporter.Metrics["cluster_writer_changes"].Metric,
+			prometheus.CounterValue, float64(cluster.Health.WriterChanges),
+			cluster.Datastore.Type, cluster.Datastore.Version, cluster.ID, cluster.Name, cluster.TenantID)
 	}
 
 	return nil
