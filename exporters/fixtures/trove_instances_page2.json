@@ -1,37 +1,37 @@
 {
     "instances": [
         {
-            "id": "9413e539-2138-4df6-b524-a064b49b13a6",
-            "name": "cs2-member-dc1-rack1-2",
+            "id": "16517140-bd04-4d87-ab75-09ca0c975367",
+            "name": "kw5-valkey-s-member-1793107092",
             "status": "ACTIVE",
             "operating_status": "HEALTHY",
             "links": [
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/9413e539-2138-4df6-b524-a064b49b13a6",
+                    "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/16517140-bd04-4d87-ab75-09ca0c975367",
                     "rel": "self"
                 },
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/9413e539-2138-4df6-b524-a064b49b13a6",
+                    "href": "https://trove.openstack.svc.cluster.local/instances/16517140-bd04-4d87-ab75-09ca0c975367",
                     "rel": "bookmark"
                 }
             ],
             "flavor": {
-                "id": "363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                "id": "52e738fd-9bd0-49b2-a09c-74d46b534272",
                 "links": [
                     {
-                        "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/52e738fd-9bd0-49b2-a09c-74d46b534272",
                         "rel": "self"
                     },
                     {
-                        "href": "https://trove-api.openstack.svc.cluster.local:8779/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "href": "https://trove.openstack.svc.cluster.local/flavors/52e738fd-9bd0-49b2-a09c-74d46b534272",
                         "rel": "bookmark"
                     }
                 ]
             },
             "datastore": {
-                "type": "cassandra",
-                "version": "5.0",
-                "version_number": "5.0"
+                "type": "valkey",
+                "version": "9-kata",
+                "version_number": "9"
             },
             "region": null,
             "access": {
@@ -39,31 +39,31 @@
             },
             "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
             "volume": {
-                "size": 4
+                "size": 2
             },
             "ip": [
-                "192.168.1.67"
+                "192.168.1.123"
             ],
             "addresses": [
                 {
-                    "address": "192.168.1.67",
+                    "address": "192.168.1.123",
                     "type": "private",
                     "network": "68ade15f-b2f1-4d58-903a-e5477c9755b8"
                 }
             ],
-            "created": "2026-10-22T22:02:15",
-            "updated": "2026-10-22T22:03:21",
-            "service_status_updated": "2026-10-22T23:09:38",
-            "cluster_id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
-            "server_id": "3498fb65-fd13-4d6d-bcd8-d8aca8a12897",
-            "volume_id": "c0ad563f-36ea-4d9a-960c-53a643069582",
+            "created": "2026-10-27T13:18:12",
+            "updated": "2026-10-27T13:25:04",
+            "service_status_updated": "2026-10-27T13:42:02",
+            "cluster_id": "73dfda58-c11a-499c-be16-370e30e20955",
+            "server_id": "12e3645a-51db-43d6-95cb-b59c2a06c177",
+            "volume_id": "5e80bf2e-1f8a-4cb9-b507-39491c6de66c",
             "encrypted_rpc_messaging": true,
             "server": {
-                "id": "3498fb65-fd13-4d6d-bcd8-d8aca8a12897",
-                "name": "cs2-member-dc1-rack1-2",
+                "id": "12e3645a-51db-43d6-95cb-b59c2a06c177",
+                "name": "kw5-valkey-s-member-1793107092",
                 "status": "ACTIVE",
                 "tenant_id": "7e92eb25f709471583f1bedf125239ac",
-                "host": "63d4b11c795045feacfffa2a618e5bf94b5304a4cb6aca6c1c590904"
+                "host": "da0434860c0e57c2dc7397eba9c42b1e5992a0d4c235eac433d787af"
             },
             "service_status": "HEALTHY",
             "deleted": false,

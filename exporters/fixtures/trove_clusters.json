@@ -1,71 +1,71 @@
 {
     "clusters": [
         {
-            "id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
-            "name": "cs2",
+            "id": "73dfda58-c11a-499c-be16-370e30e20955",
+            "name": "kw5-valkey-s",
             "task": {
                 "id": 1,
                 "name": "NONE",
                 "description": "No tasks for the cluster."
             },
-            "created": "2026-10-22T22:02:14",
-            "updated": "2026-10-22T22:06:57",
+            "created": "2026-10-27T13:18:11",
+            "updated": "2026-10-27T13:28:37",
             "links": [
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/clusters/38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+                    "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/clusters/73dfda58-c11a-499c-be16-370e30e20955",
                     "rel": "self"
                 },
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/clusters/38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
+                    "href": "https://trove.openstack.svc.cluster.local/clusters/73dfda58-c11a-499c-be16-370e30e20955",
                     "rel": "bookmark"
                 }
             ],
             "datastore": {
-                "type": "cassandra",
-                "version": "5.0"
+                "type": "valkey",
+                "version": "9-kata"
             },
             "instances": [
                 {
-                    "id": "9413e539-2138-4df6-b524-a064b49b13a6",
-                    "name": "cs2-member-dc1-rack1-2",
+                    "id": "04585468-d5b1-4c78-a7a4-138403bb8443",
+                    "name": "kw5-valkey-s-member-1793107093",
                     "type": "member",
                     "links": [
                         {
-                            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/9413e539-2138-4df6-b524-a064b49b13a6",
+                            "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/04585468-d5b1-4c78-a7a4-138403bb8443",
                             "rel": "self"
                         },
                         {
-                            "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/9413e539-2138-4df6-b524-a064b49b13a6",
+                            "href": "https://trove.openstack.svc.cluster.local/instances/04585468-d5b1-4c78-a7a4-138403bb8443",
                             "rel": "bookmark"
                         }
                     ]
                 },
                 {
-                    "id": "a3c83da9-3d6c-43e0-bff5-addf1e100e37",
-                    "name": "cs2-member-dc1-rack1-3",
+                    "id": "16517140-bd04-4d87-ab75-09ca0c975367",
+                    "name": "kw5-valkey-s-member-1793107092",
                     "type": "member",
                     "links": [
                         {
-                            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                            "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/16517140-bd04-4d87-ab75-09ca0c975367",
                             "rel": "self"
                         },
                         {
-                            "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                            "href": "https://trove.openstack.svc.cluster.local/instances/16517140-bd04-4d87-ab75-09ca0c975367",
                             "rel": "bookmark"
                         }
                     ]
                 },
                 {
-                    "id": "b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
-                    "name": "cs2-member-dc1-rack1-1",
+                    "id": "1915b943-f022-46a1-ac5a-57a1199a95e5",
+                    "name": "kw5-valkey-s-member-1793107091",
                     "type": "member",
                     "links": [
                         {
-                            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                            "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/1915b943-f022-46a1-ac5a-57a1199a95e5",
                             "rel": "self"
                         },
                         {
-                            "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                            "href": "https://trove.openstack.svc.cluster.local/instances/1915b943-f022-46a1-ac5a-57a1199a95e5",
                             "rel": "bookmark"
                         }
                     ]
@@ -75,11 +75,19 @@
                 "status": "HEALTHY",
                 "members_out": [],
                 "reason": null,
-                "since": "2026-10-22T22:07:01"
+                "since": "2026-10-27T13:33:14",
+                "writers": [
+                    "kw5-valkey-s-member-1793107092"
+                ],
+                "writer_changes": 1,
+                "writer_since": "2026-10-27T13:35:12Z"
             },
             "locality": "anti-affinity",
             "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
-            "deleted": false
+            "deleted": false,
+            "topology": "sentinel",
+            "replication_mode": "sync",
+            "sentinel_master_name": "trove"
         }
     ]
 }

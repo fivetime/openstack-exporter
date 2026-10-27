@@ -1,37 +1,37 @@
 {
     "instances": [
         {
-            "id": "a3c83da9-3d6c-43e0-bff5-addf1e100e37",
-            "name": "cs2-member-dc1-rack1-3",
+            "id": "04585468-d5b1-4c78-a7a4-138403bb8443",
+            "name": "kw5-valkey-s-member-1793107093",
             "status": "ACTIVE",
             "operating_status": "HEALTHY",
             "links": [
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                    "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/04585468-d5b1-4c78-a7a4-138403bb8443",
                     "rel": "self"
                 },
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/a3c83da9-3d6c-43e0-bff5-addf1e100e37",
+                    "href": "https://trove.openstack.svc.cluster.local/instances/04585468-d5b1-4c78-a7a4-138403bb8443",
                     "rel": "bookmark"
                 }
             ],
             "flavor": {
-                "id": "363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                "id": "52e738fd-9bd0-49b2-a09c-74d46b534272",
                 "links": [
                     {
-                        "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/52e738fd-9bd0-49b2-a09c-74d46b534272",
                         "rel": "self"
                     },
                     {
-                        "href": "https://trove-api.openstack.svc.cluster.local:8779/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "href": "https://trove.openstack.svc.cluster.local/flavors/52e738fd-9bd0-49b2-a09c-74d46b534272",
                         "rel": "bookmark"
                     }
                 ]
             },
             "datastore": {
-                "type": "cassandra",
-                "version": "5.0",
-                "version_number": "5.0"
+                "type": "valkey",
+                "version": "9-kata",
+                "version_number": "9"
             },
             "region": null,
             "access": {
@@ -39,31 +39,31 @@
             },
             "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
             "volume": {
-                "size": 4
+                "size": 2
             },
             "ip": [
-                "192.168.1.251"
+                "192.168.1.64"
             ],
             "addresses": [
                 {
-                    "address": "192.168.1.251",
+                    "address": "192.168.1.64",
                     "type": "private",
                     "network": "68ade15f-b2f1-4d58-903a-e5477c9755b8"
                 }
             ],
-            "created": "2026-10-22T22:02:15",
-            "updated": "2026-10-22T22:03:31",
-            "service_status_updated": "2026-10-22T23:07:54",
-            "cluster_id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
-            "server_id": "fb9b1b79-0fd7-47c9-ad95-aff8737448cd",
-            "volume_id": "f55f97c5-785a-48f8-becf-6bf6d65dff96",
+            "created": "2026-10-27T13:18:13",
+            "updated": "2026-10-27T13:26:17",
+            "service_status_updated": "2026-10-27T13:42:17",
+            "cluster_id": "73dfda58-c11a-499c-be16-370e30e20955",
+            "server_id": "ef1b807b-71eb-4081-8845-bcd8badd4650",
+            "volume_id": "20baedcf-f262-4985-886a-68b2fe991ef3",
             "encrypted_rpc_messaging": true,
             "server": {
-                "id": "fb9b1b79-0fd7-47c9-ad95-aff8737448cd",
-                "name": "cs2-member-dc1-rack1-3",
+                "id": "ef1b807b-71eb-4081-8845-bcd8badd4650",
+                "name": "kw5-valkey-s-member-1793107093",
                 "status": "ACTIVE",
                 "tenant_id": "7e92eb25f709471583f1bedf125239ac",
-                "host": "fa7848e99f415184ba06badb1f01e19e3ae01d8522c37c49ea17a169"
+                "host": "6295dde6245f8ae125ec4bc02712f4cf66205e6f775417b053ac2534"
             },
             "service_status": "HEALTHY",
             "deleted": false,
@@ -72,37 +72,37 @@
             "message_partition": null
         },
         {
-            "id": "b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
-            "name": "cs2-member-dc1-rack1-1",
+            "id": "1915b943-f022-46a1-ac5a-57a1199a95e5",
+            "name": "kw5-valkey-s-member-1793107091",
             "status": "ACTIVE",
             "operating_status": "HEALTHY",
             "links": [
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                    "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/instances/1915b943-f022-46a1-ac5a-57a1199a95e5",
                     "rel": "self"
                 },
                 {
-                    "href": "https://trove-api.openstack.svc.cluster.local:8779/instances/b7d29e9e-8c62-4c59-8acd-4a00af9013f6",
+                    "href": "https://trove.openstack.svc.cluster.local/instances/1915b943-f022-46a1-ac5a-57a1199a95e5",
                     "rel": "bookmark"
                 }
             ],
             "flavor": {
-                "id": "363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                "id": "52e738fd-9bd0-49b2-a09c-74d46b534272",
                 "links": [
                     {
-                        "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/flavors/52e738fd-9bd0-49b2-a09c-74d46b534272",
                         "rel": "self"
                     },
                     {
-                        "href": "https://trove-api.openstack.svc.cluster.local:8779/flavors/363f775a-7e12-44e7-bc3b-b75e2ae1c738",
+                        "href": "https://trove.openstack.svc.cluster.local/flavors/52e738fd-9bd0-49b2-a09c-74d46b534272",
                         "rel": "bookmark"
                     }
                 ]
             },
             "datastore": {
-                "type": "cassandra",
-                "version": "5.0",
-                "version_number": "5.0"
+                "type": "valkey",
+                "version": "9-kata",
+                "version_number": "9"
             },
             "region": null,
             "access": {
@@ -110,31 +110,31 @@
             },
             "tenant_id": "ac19c812536b4b06bd8c394353d683f3",
             "volume": {
-                "size": 4
+                "size": 2
             },
             "ip": [
-                "192.168.1.244"
+                "192.168.1.51"
             ],
             "addresses": [
                 {
-                    "address": "192.168.1.244",
+                    "address": "192.168.1.51",
                     "type": "private",
                     "network": "68ade15f-b2f1-4d58-903a-e5477c9755b8"
                 }
             ],
-            "created": "2026-10-22T22:02:14",
-            "updated": "2026-10-22T22:03:27",
-            "service_status_updated": "2026-10-22T23:07:58",
-            "cluster_id": "38f82ead-a7b6-46b5-ac47-fcff8f4a6909",
-            "server_id": "672b0ab4-eeb8-4bfa-bcf4-681187087edf",
-            "volume_id": "5ce9e99d-7762-4964-8961-d184e08c23b1",
+            "created": "2026-10-27T13:18:12",
+            "updated": "2026-10-27T13:25:36",
+            "service_status_updated": "2026-10-27T13:41:58",
+            "cluster_id": "73dfda58-c11a-499c-be16-370e30e20955",
+            "server_id": "94da6993-6ca5-41e6-98de-eff694cb9767",
+            "volume_id": "18618dfb-969d-4ab5-ac58-357dce66a841",
             "encrypted_rpc_messaging": true,
             "server": {
-                "id": "672b0ab4-eeb8-4bfa-bcf4-681187087edf",
-                "name": "cs2-member-dc1-rack1-1",
+                "id": "94da6993-6ca5-41e6-98de-eff694cb9767",
+                "name": "kw5-valkey-s-member-1793107091",
                 "status": "ACTIVE",
                 "tenant_id": "7e92eb25f709471583f1bedf125239ac",
-                "host": "d2d4af4b1058caea7f43e3cbcd236cf2524251ba5dc315f58cd60417"
+                "host": "1df98480adddb9e04ba5685f9c18db5738cf497698fd642af4219eb5"
             },
             "service_status": "HEALTHY",
             "deleted": false,
@@ -146,7 +146,7 @@
     "links": [
         {
             "rel": "next",
-            "href": "https://trove-api.openstack.svc.cluster.local:8779/v1.0/ac19c812536b4b06bd8c394353d683f3/mgmt/instances?include_clustered=True&deleted=False&limit=2&marker=2"
+            "href": "https://trove.openstack.svc.cluster.local/v1.0/ac19c812536b4b06bd8c394353d683f3/mgmt/instances?include_clustered=True&deleted=False&limit=2&marker=2"
         }
     ]
 }
